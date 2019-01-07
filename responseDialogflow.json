@@ -1,0 +1,71 @@
+{
+    'responseId': 'e71dad33-60cb-4224-8a9e-03f7da57611a',
+    'queryResult': {
+        'queryText': 'test',
+        'parameters': {},
+        'allRequiredParamsPresent': True,
+        'fulfillmentMessages': [{
+            'text': {
+                'text': ['']
+            }
+        }],
+        'outputContexts': [{
+            'name': 'projects/realtimeml-bd87c/agent/sessions/ABwppHGa3b5dqo_tLRs89bhMnoc8C5nMki3A2ro-3J-5wA8qo_NlvOtYE2fu8NK7F1f0wVuEwIY_4TLxb6vd0w/contexts/actions_capability_screen_output'
+        }, {
+            'name': 'projects/realtimeml-bd87c/agent/sessions/ABwppHGa3b5dqo_tLRs89bhMnoc8C5nMki3A2ro-3J-5wA8qo_NlvOtYE2fu8NK7F1f0wVuEwIY_4TLxb6vd0w/contexts/actions_capability_audio_output'
+        }, {
+            'name': 'projects/realtimeml-bd87c/agent/sessions/ABwppHGa3b5dqo_tLRs89bhMnoc8C5nMki3A2ro-3J-5wA8qo_NlvOtYE2fu8NK7F1f0wVuEwIY_4TLxb6vd0w/contexts/google_assistant_input_type_keyboard'
+        }, {
+            'name': 'projects/realtimeml-bd87c/agent/sessions/ABwppHGa3b5dqo_tLRs89bhMnoc8C5nMki3A2ro-3J-5wA8qo_NlvOtYE2fu8NK7F1f0wVuEwIY_4TLxb6vd0w/contexts/actions_capability_media_response_audio'
+        }, {
+            'name': 'projects/realtimeml-bd87c/agent/sessions/ABwppHGa3b5dqo_tLRs89bhMnoc8C5nMki3A2ro-3J-5wA8qo_NlvOtYE2fu8NK7F1f0wVuEwIY_4TLxb6vd0w/contexts/actions_capability_web_browser'
+        }],
+        'intent': {
+            'name': 'projects/realtimeml-bd87c/agent/intents/52fddf37-ce56-429e-b36d-a85336a2f102',
+            'displayName': 'webhookTest'
+        },
+        'intentDetectionConfidence': 1.0,
+        'languageCode': 'no'
+    },
+    'originalDetectIntentRequest': {
+        'source': 'google',
+        'version': '2',
+        'payload': {
+            'isInSandbox': True,
+            'surface': {
+                'capabilities': [{
+                    'name': 'actions.capability.AUDIO_OUTPUT'
+                }, {
+                    'name': 'actions.capability.SCREEN_OUTPUT'
+                }, {
+                    'name': 'actions.capability.MEDIA_RESPONSE_AUDIO'
+                }, {
+                    'name': 'actions.capability.WEB_BROWSER'
+                }]
+            },
+            'requestType': 'SIMULATOR',
+            'inputs': [{
+                'rawInputs': [{
+                    'query': 'test',
+                    'inputType': 'KEYBOARD'
+                }],
+                'arguments': [{
+                    'rawText': 'test',
+                    'textValue': 'test',
+                    'name': 'text'
+                }],
+                'intent': 'actions.intent.TEXT'
+            }],
+            'user': {
+                'locale': 'no-NO',
+                'userId': 'ABwppHEcRuTgAsaQaj15wpKD0iCCtToU6AQh8zqOlroAbP_KeEYFdYipZLiWiwG0dQhSfQFTk5w2O2hBD4_LkA'
+            },
+            'conversation': {
+                'conversationId': 'ABwppHGa3b5dqo_tLRs89bhMnoc8C5nMki3A2ro-3J-5wA8qo_NlvOtYE2fu8NK7F1f0wVuEwIY_4TLxb6vd0w',
+                'type': 'ACTIVE',
+                'conversationToken': '[]'
+            }
+        }
+    },
+    'session': 'projects/realtimeml-bd87c/agent/sessions/ABwppHGa3b5dqo_tLRs89bhMnoc8C5nMki3A2ro-3J-5wA8qo_NlvOtYE2fu8NK7F1f0wVuEwIY_4TLxb6vd0w'
+}
