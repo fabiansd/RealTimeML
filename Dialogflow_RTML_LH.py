@@ -16,6 +16,7 @@ from responses import *
 ### INTENTS ####
 PLOT_NUMBERS_INTENT = 'report.plot'
 PLOT_CATEGORIES_INTENT = 'report.categories'
+TEST = 'webhook.test'
 
 app = Flask(__name__)
 appDebug = DebuggedApplication(app, evalex=True)
@@ -25,13 +26,12 @@ def handleWebhook(intent, params):
 
     if intent == PLOT_NUMBERS_INTENT: return generateReportPlot(params)
     elif intent == PLOT_CATEGORIES_INTENT: return generateCategoriesPlot(params),
-    elif 
+    elif intent == TEST: return basiCard()
     else: return {'fulfillmentText': 'No intent handler found'}
 
-# default route
+# Main page
 @app.route('/')
 def index():
-
     return render_template("sampleReport.html")
 
 
@@ -41,24 +41,17 @@ def webhook():
     # build a request object
     req = request.get_json(force=True)
 
-
-    # print(req)
-    # fetch action from json
-    # print('\n\n\n')
-
+    # Get intent and parameters from Dialogflow JSON request object
     intent = req.get('queryResult').get('intent').get('displayName')
     params = req.get('queryResult').get('parameters')
 
     print(f'intent: {intent}')
     print(f'params: {params}')
 
-    response = {'fulfillmentText': 'Hello from Flask webhook.'}
+    # response = {'fulfillmentText': 'Hello from Flask webhook.'}
 
     response = handleWebhook(intent, params)
-    print(response)
-    
     return jsonify(response)
-    # return jsonify(handleWebhook(intent, params))
 
 
 # Host report 

@@ -1,4 +1,4 @@
-def basiCard():
+def basiCard(msg):
     return {
     "fulfillmentMessages": [
         {
