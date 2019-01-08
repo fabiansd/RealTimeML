@@ -5,12 +5,9 @@ import requests
 import json
 from datetime import datetime
 
-
 from werkzeug.debug import DebuggedApplication
 from intentHandler import generateReportPlot, generateCategoriesPlot
 from responses import basiCard
-
-
 
 ### INTENTS ####
 PLOT_NUMBERS_INTENT = 'report.plot'
@@ -18,14 +15,14 @@ PLOT_CATEGORIES_INTENT = 'report.categories'
 TEST = 'webhook.test'
 
 app = Flask(__name__)
-appDebug = DebuggedApplication(app, evalex=True)
+# appDebug = DebuggedApplication(app, evalex=True)
 
 ### switch case for calling correct intent handler
 def handleWebhook(intent, params):
 
     if intent == PLOT_NUMBERS_INTENT: return generateReportPlot(params)
     elif intent == PLOT_CATEGORIES_INTENT: return generateCategoriesPlot(params),
-    elif intent == TEST: return basiCard(),
+    elif intent == TEST: return {'fulfillmentText': 'No intent handler found'},
     else: return {'fulfillmentText': 'No intent handler found'}
 
 # Main page
@@ -47,10 +44,9 @@ def webhook():
     print(f'intent: {intent}')
     print(f'params: {params}')
 
-    # response = {'fulfillmentText': 'Hello from Flask webhook.'}
-
-    # Handle intent and generate response
-    response = handleWebhook(intent, params)
+    # Handle intent and generate response. [0] is used because JSON response is returned as tuple
+    response = handleWebhook(intent, params)[0]
+    print(response)
 
     return jsonify(response)
 

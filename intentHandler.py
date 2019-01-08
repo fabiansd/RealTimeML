@@ -5,13 +5,18 @@ import plotly.plotly as py
 
 import os
 
-from gen_HTML import gen_HTML_plot
+from gen_HTML import gen_HTML_report
+from responses import basiCard
 
+# Path for the image storage
 IMG_ROOT_PATH = os.path.join('static','plots')
 
+# Every intent has a designated function that generates the relevant report and 
+# saves the plats as an images with the same name as the function. Then the 
+# HTML report site is updated. Finally a basicard response is returned to Dialogflow
 def generateReportPlot(params):
 
-### GENERATE PLOTS #####
+### GENERATE PLOTS ###
 
     ax = plt.subplot(111)
 
@@ -28,15 +33,17 @@ def generateReportPlot(params):
 
     plt.savefig(IMG_PATH)
 
-### GENERATE HTML SCRIPT
+### GENERATE HTML SCRIPT ###
 
-    gen_HTML_plot(header= 'Plot report from date to date', IMG_PATH = IMG_PATH)
+    gen_HTML_report(header= 'Plot report from date to date', IMG_PATH = IMG_PATH)
 
-    return {'fulfillmentText': 'Report from date to date is available at http://127.0.0.1:5000/report'}
+### RETURN BASICARD RESPONSE ###
+
+    return basiCard(msg='Report to date report', title='Date report')
 
 
 
 def generateCategoriesPlot(params):
-    return {'fulfillmentText': 'Report kategori'}
+    return basiCard(msg='Report to categorical report', title='Category report')
 
 

@@ -1,5 +1,6 @@
 REPORT_URL = "https://2226d3ee.ngrok.io/report"
 
+# A basicard response in JSON form
 def basiCard(msg = "Report link to generated report", title = 'Report site', subtitle = ""):
 
     return {"fulfillmentMessages":[{"text":{"text":[msg]}},\

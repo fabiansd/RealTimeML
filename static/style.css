@@ -1,14 +1,18 @@
 /* static/style.css */
 
 h1 {  
-    color: navajowhite;
-    font-variant-caps: all-small-caps;
-    font-size: 46px;
+  font-size: 41px;
+  font-family: sans-serif;
+  font-size: -webkit-xxx-large;
 }
 
-h3 {  
-  color: white;
+p {  
+  color: (100,100,100);
   font-size: 36px;
+}
+
+img {
+
 }
 
 li {  
@@ -19,3 +23,4 @@ li {
 body {  
     background: firebrick;
 }
+
