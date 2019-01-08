@@ -7,9 +7,8 @@ from datetime import datetime
 
 
 from werkzeug.debug import DebuggedApplication
-# from gen_HTML import generate_HTML_report
-from gen_PLOTS import *
-from responses import *
+from intentHandler import generateReportPlot, generateCategoriesPlot
+from responses import basiCard
 
 
 
@@ -26,7 +25,7 @@ def handleWebhook(intent, params):
 
     if intent == PLOT_NUMBERS_INTENT: return generateReportPlot(params)
     elif intent == PLOT_CATEGORIES_INTENT: return generateCategoriesPlot(params),
-    elif intent == TEST: return basiCard()
+    elif intent == TEST: return basiCard(),
     else: return {'fulfillmentText': 'No intent handler found'}
 
 # Main page
@@ -50,7 +49,9 @@ def webhook():
 
     # response = {'fulfillmentText': 'Hello from Flask webhook.'}
 
+    # Handle intent and generate response
     response = handleWebhook(intent, params)
+
     return jsonify(response)
 
 
@@ -59,7 +60,8 @@ def webhook():
 def report():
     return render_template('report.html')
 
-
+# Example of restAPI call to get real time weather data
+'''
 @app.route('/wet', methods = ['GET','POST'])
 def getWeather():
 
@@ -96,6 +98,8 @@ def getWeather():
         ]
     }
     return jsonify(image_obj)
+
+'''
 
 # run the app
 if __name__ == '__main__':

@@ -1,30 +1,12 @@
-def basiCard(msg):
-    return {
-    "fulfillmentMessages": [
-        {
-        "text": {
-            "text": [
-            "Searcing for flights from OSL to CPH at 2019-01-07"
-            ]
-        }
-        },
-        {
-        "card": {
-            "title": "Searcing Momondo",
-            "subtitle": "Searcing for flights from OSL to CPH at 2019-01-07",
-            "imageUri": "https://www.aworldtotravel.com/wp-content/uploads/2014/06/momondo-travel-app-friend-compass-review-1050x704.jpg",
-            "buttons": [
-            {
-                "text": "View results",
-                "postback": "https://www.momondo.no/flight-search/OSL-CPH/2019-01-07T12:00:00+01:00/?sort=price_a"
-            }
-            ]
-        }
-        }
-    ],
-    "outputContexts": []
-    }
+REPORT_URL = "https://2226d3ee.ngrok.io/report"
 
+def basiCard(msg = "Report link to generated report", title = 'Report site', subtitle = ""):
+
+    return {"fulfillmentMessages":[{"text":{"text":[msg]}},\
+    {"card":{"title":title,"subtitle":"",\
+    "imageUri":"https://www.maxpixel.net/static/photo/1x/Report-Accounting-Business-Paper-Financial-Graph-3076855.jpg",\
+    "buttons":[{"text":"View report","postback":REPORT_URL\
+    }]}}],"outputContexts":[]}
 
 def suggestion(response, suggestions = [{ "title": "25"}, { "title": "45" }, {"title": "Never mind"}]):
     return {
