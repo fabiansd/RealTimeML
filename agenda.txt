@@ -1,8 +1,53 @@
 Agenda:
 
-1. Gi info om dataset -> trigre info intent
+Introduksjon:
+
+Introdusere datasettet
+- Generert
+- Kun et år
+- Kun et enkel show case, med begrensede ressurser
+
+Muligheter med denne løsningen:
+    - Åpner for mer datadrevene besultninger
+    - Reduserer tid og arbeid som er nødvendig for å ta i bruk dataen man har tilgjenngelig i møter
+    - Store muligheter for å tilpasse løsningen til eget behov.
+
+Mål: Indentifisere hvilke kundegrupper som skal fokuseres på i neste års Black Friday
+
+1. Innsikt, last inn data fra årets Black Friday salg
+
+La oss først se på fjorårets salg i sin helhet 
+
+- Gi meg et kakediagram over kjønnene som handlet
+- Hvis meg en fordeling over hvor mye hvert kjønn handlet for
+- Hvis meg en oversikt over hvor mye hver aldersgruppe fordelt i kjønn
+
+Det er helt klart menn som er vår primær inntektsgruppe, og 
+brukere i alderen xx-xx.
+
+La oss gå videre å se på hvordan denne fordelingen er i de tre største byene
+
+- Hvis meg et boksplot over inntektene for de forskjellige byene
+- 
+
+
+- 
+- 
+
+
+
+
+
+
+
+
 
 Visualiser salg i dollar fordelt over kjønn med barplot
 Visualiser antall transaksjoner fordelt over kjønn med kakeplot
 
 Visualiser salg fordelt over alder med barplot
+
+
+
+
+1. 
