@@ -42,7 +42,7 @@ def gen_HTML_report(header, IMG_PATH, sub_header = "" , subtxt = "", report_txt 
     align-items: center;
     font-family: sans-serif;
     text-align: -webkit-center;
-    background-color: #E6E6E1;
+    background-color: white;
     ">
     <h1 style="
         font-size: 50px;

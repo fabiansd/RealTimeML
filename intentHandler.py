@@ -9,13 +9,15 @@ from gen_HTML import gen_HTML_report
 from responses import basiCard
 from plotFunctions import groupPlot, countPlot, kakePlot
 
+import time
+
 # Path for the image storage
 IMG_ROOT_PATH = os.path.join('static','plots')
 
 # Every intent has a designated function that generates the relevant report and 
 # saves the plats as an images with the same name as the function. Then the 
 # HTML report site is updated. Finally a basicard response is returned to Dialogflow
-def generateGroupbyPlot(params):
+def generateGroupbyPlot(params, df):
 
     
 ### GENERATE PLOTS ###
@@ -24,9 +26,9 @@ def generateGroupbyPlot(params):
     # plot( group , column, type plot)
     gruppe = params['gruppe']
     kolonne = params['kolonne']
-    IMG_PATH = os.path.join(IMG_ROOT_PATH,'generateGroupbyPlot.jpg')
+    IMG_PATH = os.path.join(IMG_ROOT_PATH,str(time.time()) + '.jpg')
 
-    groupPlot(gruppe,kolonne,'bar',IMG_PATH)
+    groupPlot(gruppe,kolonne,'bar',IMG_PATH, df)
 
     # fig.savefig(IMG_PATH)
 
@@ -39,15 +41,15 @@ def generateGroupbyPlot(params):
     return basiCard(msg=f'{kolonne} gruppert i {gruppe}', title='Report')
 
 
-def generateKakePlot(params):
+def generateKakePlot(params, df):
 
     
 ### GENERATE PLOTS ###
 
-    gruppe = params['gruppe']
-    IMG_PATH = os.path.join(IMG_ROOT_PATH,'generateKakePlot.jpg')
+    gruppe = params.get('gruppe')
+    IMG_PATH = os.path.join(IMG_ROOT_PATH,str(time.time()) + '.jpg')
 
-    kakePlot(gruppe, IMG_PATH)
+    kakePlot(gruppe, IMG_PATH, df)
 
 
 ### GENERATE HTML SCRIPT ###
@@ -59,15 +61,15 @@ def generateKakePlot(params):
     return basiCard(msg=f'Antall transaksjoner fordelt i {gruppe}', title='Report')
 
 
-def generateCountPlot(params):
+def generateCountPlot(params, df):
 
 ### GENERATE PLOTS ###
     gruppe = params.get('gruppe')
     hue = params.get('hue')
 
-    IMG_PATH = os.path.join(IMG_ROOT_PATH,'generateCountPlot.jpg')
+    IMG_PATH = os.path.join(IMG_ROOT_PATH,str(time.time()) + '.jpg')
 
-    countPlot(gruppe, hue, IMG_PATH)
+    countPlot(gruppe, hue, IMG_PATH, df)
 
     if hue != '':
         comment = f'Antall transaksjoner fordelt i {gruppe}, kategorisert i {hue}'

@@ -3,6 +3,8 @@ Agenda:
 1. Gi info om dataset -> trigre info intent
 
 Visualiser salg i dollar fordelt over kjønn med barplot
+
 Visualiser antall transaksjoner fordelt over kjønn med kakeplot
 
 Visualiser salg fordelt over alder med barplot
+

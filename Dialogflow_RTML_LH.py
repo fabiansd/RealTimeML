@@ -4,10 +4,14 @@ from flask import Flask, request, make_response, jsonify, render_template
 import requests
 import json
 from datetime import datetime
+import pandas as pd
+import os
 
 from werkzeug.debug import DebuggedApplication
 from intentHandler import generateGroupbyPlot, generateKakePlot, generateCountPlot, datainfo
 from responses import basiCard
+
+df = pd.read_csv(os.path.join('data','BFCleaned.csv'), index_col =0)
 
 ### INTENTS ####
 TEST = 'webhook.test'
@@ -22,9 +26,9 @@ app = Flask(__name__)
 ### switch case for calling correct intent handler
 def handleWebhook(intent, params):
 
-    if intent == PLOT_GROUPBY: return generateGroupbyPlot(params)
-    elif intent == PLOT_KAKE: return generateKakePlot(params),
-    elif intent == PLOT_COUNT: return generateCountPlot(params),
+    if intent == PLOT_GROUPBY: return generateGroupbyPlot(params, df)
+    elif intent == PLOT_KAKE: return generateKakePlot(params, df),
+    elif intent == PLOT_COUNT: return generateCountPlot(params, df),
     elif intent == DATA_INFO: return datainfo(),
     else: return {'fulfillmentText': 'No intent handler found'}
 
