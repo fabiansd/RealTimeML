@@ -1,12 +1,11 @@
-REPORT_URL = "https://2226d3ee.ngrok.io/report"
 
 # A basicard response in JSON form
-def basiCard(msg = "Report link to generated report", title = 'Report site', subtitle = ""):
+def basiCard(msg = "Report link to generated report", title = 'Report site', subtitle = "", url="https://2226d3ee.ngrok.io/report"):
 
     return {"fulfillmentMessages":[{"text":{"text":[msg]}},\
     {"card":{"title":title,"subtitle":"",\
     "imageUri":"https://www.maxpixel.net/static/photo/1x/Report-Accounting-Business-Paper-Financial-Graph-3076855.jpg",\
-    "buttons":[{"text":"View report","postback":REPORT_URL\
+    "buttons":[{"text":"View","postback":url\
     }]}}],"outputContexts":[]}
 
 def suggestion(response, suggestions = [{ "title": "25"}, { "title": "45" }, {"title": "Never mind"}]):
@@ -25,7 +24,7 @@ def suggestion(response, suggestions = [{ "title": "25"}, { "title": "45" }, {"t
                     "suggestions": suggestions,
                     "linkOutSuggestion": {
                     "destinationName": "Website",
-                    "url": "https://assistant.google.com"
+                    "url": url
                     }
                 }
             }

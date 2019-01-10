@@ -30,9 +30,10 @@ def gen_HTML_plot(header, IMG_PATH, subtxt = "", report_txt = ""):
 
 
 def gen_HTML_report(header, IMG_PATH, sub_header = "" , subtxt = "", report_txt = ""):
+    print(sub_header)
     html_string = '''
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="no" dir="ltr">
 <head>
     <meta charset="utf-8">
     <title>Flask Tutorial</title>
@@ -63,7 +64,7 @@ def gen_HTML_report(header, IMG_PATH, sub_header = "" , subtxt = "", report_txt 
 </body>
 </html>
     '''
-    HTML_file = open(os.path.join('templates','report.html'),'w')
+    HTML_file = open(os.path.join('templates','report.html'),'w',encoding='utf8')
     HTML_file.write(html_string)
     HTML_file.close()
     
