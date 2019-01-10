@@ -7,35 +7,19 @@ import os
 IMG_ROOT_PATH = os.path.join('static','plots')
 PLOT_SIZE = (10,6)
 
-def groupPlot(group,column,plot, IMG_PATH, df):
+def barPlot(x, y, hue, IMG_PATH, df):
     # df = pd.read_csv(os.path.join('data','BFCleaned.csv'), index_col =0)
 
+    fig1, ax1 = plt.subplots(figsize=PLOT_SIZE)
 
-    print(IMG_PATH)
-    print('\n')
-    print(group, column)
-    print('\n')
+    if hue != '':
+        sns.barplot(x=x, y=y, hue=hue, data=df)
 
-    # ax=plt.figure(figsize=PLOT_SIZE)
+    else:
+        sns.barplot(x=x, y=y, data=df)
 
-    # df.groupby(group)[column].sum().sort_values().plot(plot)
-    # plt.ylabel(column)
-    # plt.xlabel(group)
-    
-    ax=plt.figure(figsize=(12,6))
-
-    print('fig')
-
-    # table = df.groupby(group)[column].sum().sort_values().plot(plot)
-    df.groupby(group)[column].sum().sort_values().plot(plot)
-    print('group')
-    
-    plt.ylabel(column)
-    plt.xlabel(group)
 
     plt.savefig(IMG_PATH)
-
-    print('plot sved')
 
 
 # IMG_ROOT_PATH = os.path.join('static','plots')
@@ -59,11 +43,12 @@ def countPlot(var, hue, IMG_PATH, df):
     # df = pd.read_csv(os.path.join('data','BFCleaned.csv'), index_col =0)
 
     fig1, ax1 = plt.subplots(figsize=PLOT_SIZE)
+    print(df[var].unique())
 
     if hue != '':
-        sns.countplot(df[var],hue=df[hue],order=df[var].value_counts().index)
+        sns.countplot(df[var],hue=df[hue])
     else:
-        sns.countplot(df[var],order=df[var].value_counts().index)
+        sns.countplot(df[var])
 
     plt.savefig(IMG_PATH)
 

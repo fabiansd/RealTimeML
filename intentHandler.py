@@ -7,7 +7,7 @@ import os
 
 from gen_HTML import gen_HTML_report
 from responses import basiCard
-from plotFunctions import groupPlot, countPlot, kakePlot
+from plotFunctions import barPlot, countPlot, kakePlot
 
 import time
 
@@ -18,27 +18,30 @@ IMG_ROOT_PATH = os.path.join('static','plots')
 # saves the plats as an images with the same name as the function. Then the 
 # HTML report site is updated. Finally a basicard response is returned to Dialogflow
 def generateGroupbyPlot(params, df):
-
+    print('bar plot entered')
     
 ### GENERATE PLOTS ###
 
-    # Her må params matches opp
-    # plot( group , column, type plot)
-    gruppe = params['gruppe']
-    kolonne = params['kolonne']
-    IMG_PATH = os.path.join(IMG_ROOT_PATH,str(time.time()) + '.jpg')
+    x = params.get('x')
+    y = params.get('y')
+    hue= params.get('hue')
+    IMG_PATH = os.path.join(IMG_ROOT_PATH,str(x)+str(y)+str(hue) + '_bar.jpg')
 
-    groupPlot(gruppe,kolonne,'bar',IMG_PATH, df)
-
-    # fig.savefig(IMG_PATH)
+    if os.path.isfile(IMG_PATH) != True:
+        barPlot(x,y,hue,IMG_PATH, df)
 
 ### GENERATE HTML SCRIPT ###
+    if hue == '':
+        comment = f'{y} fordelt over {x}'
+    else:
+        comment = f'{y} fordelt over {x}, kategorisert i {hue}'
 
-    gen_HTML_report(header= 'Gruppering plot', sub_header=f'{kolonne} gruppert i {gruppe}', IMG_PATH = IMG_PATH)
+    gen_HTML_report(header= 'Gruppering plot', sub_header=comment, IMG_PATH = IMG_PATH)
 
 ### RETURN BASICARD RESPONSE ###
 
-    return basiCard(msg=f'{kolonne} gruppert i {gruppe}', title='Report')
+    print('bar plot entered')
+    return basiCard(msg=comment, title='Report')
 
 
 def generateKakePlot(params, df):
@@ -67,9 +70,9 @@ def generateCountPlot(params, df):
     gruppe = params.get('gruppe')
     hue = params.get('hue')
 
-    IMG_PATH = os.path.join(IMG_ROOT_PATH,str(time.time()) + '.jpg')
-
-    countPlot(gruppe, hue, IMG_PATH, df)
+    IMG_PATH = os.path.join(IMG_ROOT_PATH,str(gruppe)+str(hue) + '_count.jpg')
+    if os.path.isfile(IMG_PATH) != True:
+        countPlot(gruppe, hue, IMG_PATH, df)
 
     if hue != '':
         comment = f'Antall transaksjoner fordelt i {gruppe}, kategorisert i {hue}'
@@ -85,6 +88,33 @@ def generateCountPlot(params, df):
 
     return basiCard(msg=comment, title='Report')
 
+def generateCorr(params, df):
+
+    IMG_PATH = os.path.join(IMG_ROOT_PATH,'korrelasjon.jpg')
+
+    if os.path.isfile(IMG_PATH) != True:
+
+        df_pred = pd.read_csv(os.path.join('data','BFCleaned.csv'), index_col =0)
+        df_pred['Alder'] = df_pred['Alder'].map({'0-17': 0, '18-25': 1, '26-35': 2, '36-45': 3, '46-50': 4, '51-55': 5, '55+': 6})
+        df_pred['Kjønn'] = df_pred['Kjønn'].map({'M': 0,'F': 1})
+        df_pred['By'] = df_pred['By'].map({'A': 0,'B': 1,'C': 2})
+        df_pred['Boperiode_i_by'] = df_pred['Boperiode_i_by'].map({'0': 0, '1': 1, '2': 2, '3': 3, '4+': 4})
+
+
+        import seaborn as sns
+        corrmat = df_pred[['Kjønn', 'Alder', 'Yrke', 'By',
+        'Boperiode_i_by', 'Sivilstatus', 'Produkt_kategori',
+        'Salg']].corr()
+        fig,ax = plt.subplots(figsize = (10,6))
+        sns.heatmap(corrmat, vmax=.8, square=True)
+
+        plt.savefig(IMG_PATH)
+
+    gen_HTML_report(header= 'Korrelasjonsmatrise', sub_header='', IMG_PATH = IMG_PATH)
+
+### RETURN BASICARD RESPONSE ###
+
+    return basiCard(msg='Korrelasjonsmatrise', title='Report')
 
 def datainfo():
 

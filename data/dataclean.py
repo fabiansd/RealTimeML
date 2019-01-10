@@ -43,12 +43,12 @@ df.to_csv('BFCleaned.csv')
 # Test and compare the new dataset
 df_cleaned = pd.read_csv('BFCleaned.csv', index_col =0)
 
-print(df.info())
-print('\n')
-print(df_cleaned.info())
+# print(df.info())
+# print('\n')
+# print(df_cleaned.info())
 
-groupPlot('Kjønn','Salg','bar',df)
-groupPlot('Kjønn','Salg','bar',df_cleaned)
+# groupPlot('Kjønn','Salg','bar',df)
+# groupPlot('Kjønn','Salg','bar',df_cleaned)
 
 # print('\n')
 # print(df.head(10))

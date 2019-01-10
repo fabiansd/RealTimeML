@@ -30,7 +30,6 @@ def gen_HTML_plot(header, IMG_PATH, subtxt = "", report_txt = ""):
 
 
 def gen_HTML_report(header, IMG_PATH, sub_header = "" , subtxt = "", report_txt = ""):
-    print(sub_header)
     html_string = '''
 <!DOCTYPE html>
 <html lang="no" dir="ltr">
