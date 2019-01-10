@@ -25,16 +25,37 @@ La oss først se på fjorårets salg i sin helhet
 Det er helt klart menn som er vår primær inntektsgruppe, og 
 brukere i alderen xx-xx.
 
+- 
+
 La oss gå videre å se på hvordan denne fordelingen er i de tre største byene
 
-- Hvis meg et boksplot over inntektene for de forskjellige byene
+- Hvis meg et kakediagram over inntektene for de forskjellige byene
+- Hvis meg et kakediagram over antall transaksjoner i de forskjllige byene
+
+Åja, så selvom den by 3 tjener mest er det flere separate kjøp som skjer i by 2
+
+- Vis meg en fordeling over antall kjøp i by 3 fordelt etter aldersgruppe
+- Vis meg en fordeling over antall kjøp i by 
+
+- Vis meg en oversikt over alder gitt områder
+
+Ser ut som det er flest gamle i område 3, og flest unge i by 2
+Eldre kjøper dyre enkelt produkter, mens unge kjøper flere billige.
+Dette bør refklekteres i reklamekampanjene våre
+
+PS. Vet ikke om det faktisk er sånn...
+
+- -------------------------
 - 
 
+Ide hvis pris inkluderes
 
-- 
-- 
+ - Hvis meg et plot over antall salg mot inntekt fordelt på stater
+ - Gjør det samme for aldersgrupper
 
-
+ Må se hva som skjer, men kan da si:
+ Ser at vi bør fokusere på billigere produkter på den yngre kundegruppen i både område 1 og 2, mens 
+ vi bør fokusere på å noen store produkter med avslag til den eldre kundegruppen i område 3
 
 
 
