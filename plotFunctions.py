@@ -18,8 +18,22 @@ def barPlot(x, y, hue, IMG_PATH, df):
     else:
         sns.barplot(x=x, y=y, data=df)
 
-
     plt.savefig(IMG_PATH)
+
+def purchasePlot(x, hue, IMG_PATH, df):
+    # df = pd.read_csv(os.path.join('data','BFCleaned.csv'), index_col =0)
+
+    fig1, ax1 = plt.subplots(figsize=PLOT_SIZE)
+
+    if hue != '':
+        df.groupby([x,hue])['Salg'].sum().plot('barh')
+
+    else:
+        df.groupby(x)['Salg'].sum().plot('bar')
+
+    plt.ylabel('Salg i dollar (k)')
+    plt.savefig(IMG_PATH)
+
 
 
 # IMG_ROOT_PATH = os.path.join('static','plots')

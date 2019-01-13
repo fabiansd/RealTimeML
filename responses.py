@@ -1,6 +1,6 @@
 
 # A basicard response in JSON form
-def basiCard(msg = "Report link to generated report", title = 'Report site', subtitle = "", url="https://2226d3ee.ngrok.io/report"):
+def basiCard(msg = "Report link to generated report", title = 'Report site', subtitle = "", url=""):
 
     return {"fulfillmentMessages":[{"text":{"text":[msg]}},\
     {"card":{"title":title,"subtitle":"",\

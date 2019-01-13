@@ -1,0 +1,16 @@
+
+Funksjonalitet:
+ - Mulighet til å sortere tallene i plot etter valgfrie regler
+ - 
+
+Visualiseringer:
+ - Visualisere historgram og fordelinger
+ - Filtrering av spesifikke variabler
+
+Maskinlæring:
+ - Prediksjon av salgstall for bestemte grupper
+ - Klusteranalyse av sammenhenger mellom salgstall og kundeinformasjon
+
+ Visjon:
+ - Sammenkoble med Qlik Sense, Tableau, Power BI
+ - Koble opp med autoML tjenester

@@ -27,8 +27,8 @@ df["Product_Category_2"] = df["Product_Category_2"].astype(int)
 df["Product_Category_3"] = df["Product_Category_3"].astype(int)
 
 # Replacing with named variables
-df['Marital_Status'].replace(0,'Single',inplace=True)
-df['Marital_Status'].replace(1,'Married',inplace=True)
+df['Marital_Status'].replace(0,'Singel',inplace=True)
+df['Marital_Status'].replace(1,'Gift',inplace=True)
 
 # Creating new feature
 df['combined_G_M'] = df.apply(lambda x:'%s_%s' % (x['Gender'],x['Marital_Status']),axis=1)

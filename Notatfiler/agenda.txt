@@ -1,0 +1,86 @@
+Introduksjon:
+
+Konsept: Koble opp stemmestyrte kommandoer med visualisering og maskinlæring. Data analyse skal gjøres tilgjengelig i møterommet.
+
+Mulig å umiddelbart trekke ut data fra database og visualisere dette på en måte man spør etter.
+
+Deretter kunne gjøre statistiske analyser og maskinlæring
+
+Introdusere datasettet
+- Generert
+- Kun et år
+- Kun et enkel show case, med begrensede ressurser
+
+Muligheter med denne løsningen:
+    - Åpner for mer datadrevene besultninger
+    - Reduserer tid og arbeid som er nødvendig for å ta i bruk dataen man har tilgjenngelig i for eksempel møter
+    - Store muligheter for å tilpasse løsningen til eget behov
+    - Muliggjør data analyse for alle personer
+
+Mål: Indentifisere hvilke kundegrupper som skal fokuseres på i neste års Black Friday
+
+1. Innsikt, last inn data fra årets Black Friday salg
+
+- Se info om data
+"kan vi få se litt informasjon om dataen"
+
+Kjønn og alder
+
+- Kakediagram: transaksjon pr kjønn
+"Vis meg kakediagram over transaksjoner fordelt i kjønn"
+
+- Bar: salg pr kjønn
+"Vis meg totalt salg i dollar fordelt over kjønn"
+
+- Kake: transaksjoner pr aldersgruppe
+"Visualiser et kakediagram over transaksjoner for hver aldersgruppe"
+
+- Bar: salg pr alder
+"Visualiser totalt salg i alder"
+
+- Bar: Transaksjoner pr alder kat kjønn
+" Transaksjoner for aldergruppene kategorisert etter kjønn"
+
+- Bar: salg pr alder kat kjønn
+"Vis meg salg fordelt i alder kategorisert i kjønn"
+
+- Vis meg en oversikt over hvor mye hver aldersgruppe har handlet fordelt i kjønn
+"Vis meg totalt salg fordelt i alder kategorisert i kjønn"
+
+- Bar: salg pr gift/singel
+"Plot salg fordelt over kjønn kategorisert i sivilstatus"
+
+Det kommer her frem at single menn menn som er vår primær inntektsgruppe, og 
+brukere i alderen 26-35. Dette gjelder tydeligvis i alle byer.
+
+By
+
+- Kake: Trans pr by
+"Vis kakeplot over antall transaksjoner per by"
+
+- Bar: transaksjoner pr by kategorisert i alder
+"transaksjoner pr by kategorisert i alder"
+
+ - Bar: Salg pr boperiode i by
+"Beregn salg fordelt over hvor mange år kjøper har bodd i nåværende by"
+
+Yrke
+
+- Bar: salg pr yrke
+"salg pr yrke"
+
+- Bar: Transaksjoner pr yrke kat by
+ "plot transaksjoner fordelt i yrke kategorisert i by"
+
+Vi kan se her at yrke 0, 4 og spesielt er de mest innbringende yrkene. I tillegg kan vi observere at kunder med disse yrkene har flere transaksjoner i by B enn i de andre byene. Noe som tyder på at kunder med yrke 0,4 og 7 i by B er våre kunder med mest kjøpskraft. Og merkelig nok, er det fleste kjøpere i gruppen beboere som har bodd i byen i 1 år.
+
+Produkt og kategori
+
+- Bar: salg pr produkt kategori
+"fordelt i hver produkt kategori"
+
+- Bar: korrelasjon
+"vis oss en korrelasjonsanalyse"
+
+Her ser vi en ikke ekstremt sterk korrelasjon, takket være skrubbet data
+

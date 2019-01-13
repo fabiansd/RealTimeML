@@ -15,9 +15,9 @@ df = pd.read_csv(os.path.join('data','BFCleaned.csv'), index_col =0)
 
 ### INTENTS ####
 TEST = 'webhook.test'
-PLOT_BAR = 'plot.bar'
+PLOT_SALG = 'plot.salg'
 PLOT_KAKE = 'report.kakeplot'
-PLOT_COUNT = 'plot.count'
+PLOT_COUNT = 'plot.transaksjoner'
 PLOT_CORR = 'plot.corr'
 DATA_INFO = 'datainfo'
 
@@ -28,7 +28,7 @@ app = Flask(__name__)
 ### switch case for calling correct intent handler
 def handleWebhook(intent, params):
 
-    if intent == PLOT_BAR: return generateGroupbyPlot(params, df)
+    if intent == PLOT_SALG: return generateGroupbyPlot(params, df)
     elif intent == PLOT_KAKE: return generateKakePlot(params, df),
     elif intent == PLOT_COUNT: return generateCountPlot(params, df),
     elif intent == PLOT_CORR: return generateCorr(params, df),

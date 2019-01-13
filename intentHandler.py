@@ -7,17 +7,48 @@ import os
 
 from gen_HTML import gen_HTML_report
 from responses import basiCard
-from plotFunctions import barPlot, countPlot, kakePlot
+from plotFunctions import barPlot, countPlot, kakePlot, purchasePlot
 
 import time
 
 # Path for the image storage
+URL = "https://9134f82e.ngrok.io"
+URL_REPORT = os.path.join(URL,'report')
+URL_DATAINFO = os.path.join(URL,'datainfo')
+
 IMG_ROOT_PATH = os.path.join('static','plots')
 
 # Every intent has a designated function that generates the relevant report and 
 # saves the plats as an images with the same name as the function. Then the 
 # HTML report site is updated. Finally a basicard response is returned to Dialogflow
 def generateGroupbyPlot(params, df):
+    
+### GENERATE PLOTS ###
+
+    x = params.get('x')
+    # y = params.get('y')
+    hue= params.get('hue')
+    IMG_PATH = os.path.join(IMG_ROOT_PATH,str(x)+str(hue) + '_salg_bar.jpg')
+
+    if os.path.isfile(IMG_PATH) != True:
+        purchasePlot(x,hue,IMG_PATH, df)
+
+### GENERATE HTML SCRIPT ###
+    if hue == '':
+        comment = f'Salg fordelt over {x}'
+    else:
+        comment = f'Salg fordelt over {x}, kategorisert i {hue}'
+
+    gen_HTML_report(header= 'Gruppering plot', sub_header=comment, IMG_PATH = IMG_PATH)
+
+### RETURN BASICARD RESPONSE ###
+
+    print('bar plot entered')
+    return basiCard(msg=comment, title='Report', url=URL_REPORT)
+
+
+
+def generatePurchasePlot(params, df):
     print('bar plot entered')
     
 ### GENERATE PLOTS ###
@@ -41,18 +72,17 @@ def generateGroupbyPlot(params, df):
 ### RETURN BASICARD RESPONSE ###
 
     print('bar plot entered')
-    return basiCard(msg=comment, title='Report')
+    return basiCard(msg=comment, title='Report', url=URL_REPORT)
 
 
 def generateKakePlot(params, df):
-
-    
 ### GENERATE PLOTS ###
 
     gruppe = params.get('gruppe')
-    IMG_PATH = os.path.join(IMG_ROOT_PATH,str(time.time()) + '.jpg')
+    IMG_PATH = os.path.join(IMG_ROOT_PATH,str(gruppe) + '_kake.jpg')
 
-    kakePlot(gruppe, IMG_PATH, df)
+    if os.path.isfile(IMG_PATH) != True:
+        kakePlot(gruppe, IMG_PATH, df)
 
 
 ### GENERATE HTML SCRIPT ###
@@ -61,7 +91,7 @@ def generateKakePlot(params, df):
 
 ### RETURN BASICARD RESPONSE ###
 
-    return basiCard(msg=f'Antall transaksjoner fordelt i {gruppe}', title='Report')
+    return basiCard(msg=f'Antall transaksjoner fordelt i {gruppe}', title='Report', url=URL_REPORT)
 
 
 def generateCountPlot(params, df):
@@ -86,7 +116,7 @@ def generateCountPlot(params, df):
 
 ### RETURN BASICARD RESPONSE ###
 
-    return basiCard(msg=comment, title='Report')
+    return basiCard(msg=comment, title='Report', url=URL_REPORT)
 
 def generateCorr(params, df):
 
@@ -114,8 +144,8 @@ def generateCorr(params, df):
 
 ### RETURN BASICARD RESPONSE ###
 
-    return basiCard(msg='Korrelasjonsmatrise', title='Report')
+    return basiCard(msg='Korrelasjonsmatrise', title='Report', url=URL_REPORT)
 
 def datainfo():
 
-    return basiCard(msg='Link to dataset information', title='Report', url="https://2226d3ee.ngrok.io/datainfo")
+    return basiCard(msg='Link to dataset information', title='Report', url=URL_DATAINFO)
